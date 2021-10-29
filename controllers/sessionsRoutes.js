@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const userRoutes = require("./userController");
-router.use("/users",userRoutes);
+router.get('/',(req,res)=>{
+    res.json(req.session);
+})
 
 module.exports = router;
