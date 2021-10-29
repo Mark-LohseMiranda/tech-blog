@@ -36,6 +36,7 @@ router.post("/login",(req,res)=>{
         }
     }).then(foundUser=>{
         if(!foundUser){
+            req.session.destroy();
             res.status(401).json({message:"incorrect email or password"})
         } else {
             if(bcrypt.compareSync(req.body.password,foundUser.password)){
@@ -46,6 +47,7 @@ router.post("/login",(req,res)=>{
                 }
                 res.json(foundUser)
             } else {
+                req.session.destroy();
                 res.status(401).json({message:"incorrect email or password"})
             }
         }
@@ -53,6 +55,11 @@ router.post("/login",(req,res)=>{
          console.log(err);
         res.status(500).json(err);
     })
+})
+
+router.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.send("logged out!");
 })
 
 router.delete("/:id",(req,res)=>{
