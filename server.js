@@ -7,9 +7,14 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    helpers: {
+        short: function (aString) {return aString.toString().slice(0,15)}
+    }
+});
 
-const {User} = require('./models');
+
+const {User,Blog,Comment} = require('./models');
 const routes = require("./controllers");
 
 app.engine('handlebars', hbs.engine);
