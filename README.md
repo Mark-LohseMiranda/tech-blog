@@ -26,20 +26,23 @@
 
 ### Usage
 
->
-> [https://marklm-tech-blog.herokuapp.com/](https://marklm-tech-blog.herokuapp.com/)
->
+![Screen Shot 2021-10-31 at 3 14 05 PM](https://user-images.githubusercontent.com/83737312/139602958-f34299eb-1f26-4447-9ab6-d2978ace21f9.png)
+![Screen Shot 2021-10-31 at 3 14 30 PM](https://user-images.githubusercontent.com/83737312/139602960-92981ffc-bd1f-4445-ac22-e287f0d8e620.png)
+![Screen Shot 2021-10-31 at 3 14 47 PM](https://user-images.githubusercontent.com/83737312/139602962-71d17186-809b-4458-b95a-994fd2904e0e.png)
+
 
 ### License
 
->
-> MIT
->
+>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### Contributing
 
 >
-> [https://github.com/Mark-LohseMiranda/tech-blog](https://github.com/Mark-LohseMiranda/tech-blog)
+> This project is no longer being developed. Contributions are not necessary. 
 >
 
 ### Test Instructions
