@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {User, Blog, Comment} = require('../models');
 
+//get all blogs and render home page
+
 router.get("/",(req,res)=>{
     Blog.findAll({
         include: [User]
@@ -20,6 +22,8 @@ router.get("/",(req,res)=>{
     })
 })
 
+//check if user logged in then get all user blogs and render dashboard page
+
 router.get("/dashboard",(req,res)=>{
     if(!req.session.user){
         return res.redirect("/login")
@@ -33,13 +37,19 @@ router.get("/dashboard",(req,res)=>{
     })
 })
 
+//render login page
+
 router.get("/login",(req,res)=>{
     res.render("login")
 })
 
+//render sign up page
+
 router.get("/signup",(req,res)=>{
     res.render("signup")
 })
+
+//render new post page
 
 router.get("/newpost",(req,res)=>{
     if(!req.session.user){

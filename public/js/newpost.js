@@ -1,6 +1,10 @@
 const newPostForm = document.querySelector("#newpost-form");
 
+//hides new post button
+
 newPost.classList.toggle("hide");
+
+//gathers form info and sends it to blog controller
 
 newPostForm.addEventListener("submit",(e)=>{
     e.preventDefault();

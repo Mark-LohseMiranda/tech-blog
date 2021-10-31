@@ -3,6 +3,8 @@ const router = express.Router();
 const { User, Blog, Comment } = require("../../models");
 const bcrypt = require("bcrypt");
 
+//get all users
+
 router.get("/", (req, res) => {
   User.findAll({
     include: [Blog, Comment],
@@ -20,6 +22,8 @@ router.get("/", (req, res) => {
     });
 });
 
+//create user
+
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -34,6 +38,8 @@ router.post("/", (req, res) => {
       res.status(500).json({ message: "an error occured", err: err });
     });
 });
+
+//log a user in
 
 router.post("/login", (req, res) => {
   User.findOne({
@@ -65,10 +71,14 @@ router.post("/login", (req, res) => {
     });
 });
 
+//log out a user
+
 router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+
+//get one user
 
 router.get("/:id", (req, res) => {
   User.findOne({
@@ -90,6 +100,8 @@ router.get("/:id", (req, res) => {
       res.status(500).json({ message: "an error occured", err: err });
     });
 });
+
+//delete a user
 
 router.delete("/:id", (req, res) => {
   User.destroy({

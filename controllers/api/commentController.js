@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { User, Blog, Comment } = require("../../models");
 
+//check if user logged in then get all comments
+
 router.get("/", (req, res) => {
+  if(!req.session.user){
+    return res.redirect("/login")}
   Comment.findAll({
     include: [User, Blog],
   })
@@ -19,7 +23,29 @@ router.get("/", (req, res) => {
     });
 });
 
+//check if user logged in then get one comment
+
+router.get("/:id", (req, res) => {
+  if(!req.session.user){
+    return res.redirect("/login")}
+  Comment.findOne({
+    where: {id: req.params.id
+    }
+  })
+    .then((comment) => {
+      res.json(comment);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "an error occured", err: err });
+    });
+});
+
+//check if user logged in then create a comment
+
 router.post("/:id", (req, res) => {
+  if(!req.session.user){
+    return res.redirect("/login")}
   Comment.create({
     body: req.body.body,
     username: req.session.user.username,
@@ -34,6 +60,8 @@ router.post("/:id", (req, res) => {
       res.status(500).json({ message: "an error occured", err: err });
     });
 });
+
+//delete a comment 
 
 router.delete("/:id", (req, res) => {
   Comment.destroy({

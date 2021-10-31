@@ -1,6 +1,10 @@
 const loginForm = document.querySelector("#login-form");
 
+//hide new post button
+
 newPost.classList.toggle("hide");
+
+//send form info to user controller to login
 
 loginForm.addEventListener("submit",(e)=>{
     e.preventDefault();

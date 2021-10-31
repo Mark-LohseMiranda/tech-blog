@@ -7,8 +7,8 @@
 {{#each blogs}}
   <div class="card">
     <div class="card-divider">
-      <div>
-      {{title}}
+      <div class="card-title">
+      <a href="/api/blogs/{{id}}">{{title}}</a>
       </div>
       <div class="created">
         Created on {{short createdAt}}

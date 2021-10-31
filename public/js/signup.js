@@ -1,6 +1,10 @@
 const signupForm = document.querySelector("#signup-form");
 
+//hides new post button
+
 newPost.classList.toggle("hide");
+
+//gathers form info and sends it to user controller
 
 signupForm.addEventListener("submit",(e)=>{
     e.preventDefault();
@@ -17,7 +21,19 @@ signupForm.addEventListener("submit",(e)=>{
         }
     }).then(res=>{
         if(res.ok){
-           location.href = "/dashboard"
+            const userObj={
+                email:document.querySelector("#email").value,
+                password:document.querySelector("#password").value,
+            }
+            fetch("/api/users/login",{
+                method:"POST",
+                body:JSON.stringify(userObj),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            }).then(res=>{
+                if(res.ok){
+                   location.href = "/dashboard"}})
         } else {
             alert("uh oh spaghettio")
         }

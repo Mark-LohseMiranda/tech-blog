@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 3000;
 
 const hbs = exphbs.create({
     helpers: {
-        short: function (aString) {return aString.toString().slice(0,15)}
+        short: function (aString) {return aString.toString().slice(0,15)},
+        owner: function (blogId, userId) {return blogId === userId}
     }
 });
 

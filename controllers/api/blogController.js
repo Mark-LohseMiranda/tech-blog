@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { User, Blog, Comment } = require("../../models");
 
+//get all blog posts
+
 router.get("/", (req, res) => {
   Blog.findAll({
     include: [User, Comment],
@@ -19,6 +21,8 @@ router.get("/", (req, res) => {
     });
 });
 
+//create a blog post
+
 router.post("/", (req, res) => {
   Blog.create({
     title: req.body.title,
@@ -33,6 +37,33 @@ router.post("/", (req, res) => {
       res.status(500).json({ message: "an error occured", err: err });
     });
 });
+
+//get one blog post
+
+router.get("/:id", (req, res) => {
+  Blog.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [User, Comment],
+  })
+    .then((blogData) => {
+      const hbsBlogs = blogData.get({ plain: true });
+      if (req.session.user) {
+        hbsBlogs.username = req.session.user.username;
+        hbsBlogs.usernameId = req.session.user.id;
+        res.render("singleblog", hbsBlogs);
+      } else {
+        res.render("singleblog", hbsBlogs);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "an error occured", err: err });
+    });
+});
+
+//delete one blog post
 
 router.delete("/:id", (req, res) => {
   Blog.destroy({
